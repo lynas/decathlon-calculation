@@ -73,6 +73,7 @@ public class AppUtil {
 
             XML_FILE_LOCATION = prop.getProperty("xml.file.path");
             XML_FILE_NAME = prop.getProperty("xml.file.name");
+            INPUT_CSV_LOCATION = prop.getProperty("input.csv.location");
 
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -40,5 +40,7 @@ public class AppConstant {
     public static String XML_FILE_LOCATION;
     public static String XML_FILE_NAME;
 
+    public static String INPUT_CSV_LOCATION;
+
 
 }
