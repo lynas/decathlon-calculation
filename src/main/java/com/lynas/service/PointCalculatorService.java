@@ -5,7 +5,7 @@ import com.lynas.dto.ResultDTO;
 import static com.lynas.util.AppConstant.*;
 
 public class PointCalculatorService {
-    public ResultDTO calculate(ResultDTO result) {
+    public ResultDTO calculateResultTotal(ResultDTO result) {
         double totalScore = 0.0;
         totalScore += calculatePoint(A_100_METER, B_100_METER, C_100_METER, result.getRun100Meter());
         totalScore += calculatePoint(A_LONG_JUMP, B_LONG_JUMP, C_LONG_JUMP, result.getLongJump()*100);

@@ -19,7 +19,7 @@ public class CompetitionService {
         try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
             return stream.filter(it -> !it.trim().isEmpty())
                      .map(it -> new AppUtil().stringToResultDTO(it))
-                     .map(r -> new PointCalculatorService().calculate(r))
+                     .map(r -> new PointCalculatorService().calculateResultTotal(r))
                      .sorted((r1, r2) -> r2.getTotalScore().compareTo(r1.getTotalScore()))
                      .collect(Collectors.toList());
         } catch (Exception e) {
