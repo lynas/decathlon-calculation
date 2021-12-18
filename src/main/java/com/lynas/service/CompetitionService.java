@@ -16,10 +16,12 @@ import static com.lynas.util.AppConstant.XML_FILE_NAME;
 public class CompetitionService {
 
     public List<ResultDTO> calculateResult(String fileName) {
+        AppUtil appUtil = new AppUtil();
+        PointCalculatorService service = new PointCalculatorService();
         try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
             return stream.filter(it -> !it.trim().isEmpty())
-                     .map(it -> new AppUtil().stringToResultDTO(it))
-                     .map(r -> new PointCalculatorService().calculateResultTotal(r))
+                     .map(appUtil::stringToResultDTO)
+                     .map(service::calculateResultTotal)
                      .sorted((r1, r2) -> r2.getTotalScore().compareTo(r1.getTotalScore()))
                      .collect(Collectors.toList());
         } catch (Exception e) {
