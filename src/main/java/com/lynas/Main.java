@@ -16,7 +16,6 @@ public class Main {
 
         List<ResultDTO> resultList = service.calculateResult(INPUT_CSV_LOCATION);
         List<ResultDTO> resultListSorted = service.sortResultByPoints(resultList);
-
         service.writeCalculationResultToXML(resultListSorted);
     }
 
