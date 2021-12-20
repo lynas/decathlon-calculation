@@ -4,9 +4,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name = "result")
+@XmlRootElement(name = "athlete")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ResultDTO {
+public class AthleteDTO {
     private String name;
     private double run100Meter;
     private double longJump;
@@ -21,12 +21,12 @@ public class ResultDTO {
     private Double totalScore;
     private String place;
 
-    public ResultDTO() {
+    public AthleteDTO() {
     }
 
-    public ResultDTO(String name, double run100Meter, double longJump, double shotPut, double highJump,
-                  double run400Meter, double hurdles110Metres, double discusThrow, double poleVault,
-                  double javelinThrow, double run1500Meter) {
+    public AthleteDTO(String name, double run100Meter, double longJump, double shotPut, double highJump,
+                      double run400Meter, double hurdles110Metres, double discusThrow, double poleVault,
+                      double javelinThrow, double run1500Meter) {
         this.name = name;
         this.run100Meter = run100Meter;
         this.longJump = longJump;
@@ -142,24 +142,5 @@ public class ResultDTO {
 
     public void setPlace(String place) {
         this.place = place;
-    }
-
-    @Override
-    public String toString() {
-        return "Result{" +
-                "name='" + name + '\'' +
-                ", run100Meter=" + run100Meter +
-                ", longJump=" + longJump +
-                ", shotPut=" + shotPut +
-                ", highJump=" + highJump +
-                ", run400Meter=" + run400Meter +
-                ", hurdles110Metres=" + hurdles110Metres +
-                ", discusThrow=" + discusThrow +
-                ", poleVault=" + poleVault +
-                ", javelinThrow=" + javelinThrow +
-                ", run1500Meter=" + run1500Meter +
-                ", totalScore=" + totalScore +
-                ", place='" + place + '\'' +
-                '}';
     }
 }

@@ -1,6 +1,6 @@
 package com.lynas;
 
-import com.lynas.dto.ResultDTO;
+import com.lynas.dto.AthleteDTO;
 import com.lynas.service.CompetitionService;
 import com.lynas.util.AppUtil;
 
@@ -14,9 +14,9 @@ public class Main {
         AppUtil.loadApplicationConfig();
         CompetitionService service = new CompetitionService();
 
-        List<ResultDTO> resultList = service.calculateResult(INPUT_CSV_LOCATION);
-        List<ResultDTO> resultListSorted = service.sortResultByPoints(resultList);
-        service.writeCalculationResultToXML(resultListSorted);
+        List<AthleteDTO> athleteListWithCalculatedTotalPoints = service.calculateAthleteTotalPoint(INPUT_CSV_LOCATION);
+        List<AthleteDTO> athleteListSortedByPoints = service.sortAthleteByTotalPoints(athleteListWithCalculatedTotalPoints);
+        service.writeCalculationResultToXML(athleteListSortedByPoints);
     }
 
 }

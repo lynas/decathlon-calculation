@@ -1,7 +1,7 @@
 package com.lynas.service;
 
-import com.lynas.dto.ResultDTO;
-import com.lynas.dto.ResultListDTO;
+import com.lynas.dto.AthleteDTO;
+import com.lynas.dto.AthletesDTO;
 import com.lynas.util.AppUtil;
 
 import java.nio.file.Files;
@@ -15,13 +15,13 @@ import static com.lynas.util.AppConstant.XML_FILE_NAME;
 
 public class CompetitionService {
 
-    public List<ResultDTO> calculateResult(String fileName) {
+    public List<AthleteDTO> calculateAthleteTotalPoint(String fileName) {
         AppUtil appUtil = new AppUtil();
         PointCalculatorService service = new PointCalculatorService();
         try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
             return stream.filter(it -> !it.trim().isEmpty())
-                     .map(appUtil::stringToResultDTO)
-                     .map(service::calculateResultTotal)
+                     .map(appUtil::stringToAthleteDTO)
+                     .map(service::calculateTotalPoints)
                      .sorted((r1, r2) -> r2.getTotalScore().compareTo(r1.getTotalScore()))
                      .collect(Collectors.toList());
         } catch (Exception e) {
@@ -30,16 +30,16 @@ public class CompetitionService {
         }
     }
 
-    public List<ResultDTO> sortResultByPoints(List<ResultDTO> resultList) {
-        for (ResultDTO resultDTO : resultList) {
-            resultDTO.setPlace(nextPlace());
+    public List<AthleteDTO> sortAthleteByTotalPoints(List<AthleteDTO> athleteList) {
+        for (AthleteDTO athlete : athleteList) {
+            athlete.setPlace(nextPlace());
         }
-        return resultList;
+        return athleteList;
     }
 
-    public void writeCalculationResultToXML(List<ResultDTO> resultList) {
-        new WriteDataToXMLService<ResultListDTO>().writeDataToXMLFile(XML_FILE_LOCATION, XML_FILE_NAME,
-                new ResultListDTO(resultList), ResultListDTO.class);
+    public void writeCalculationResultToXML(List<AthleteDTO> athleteList) {
+        new WriteDataToXMLService<AthletesDTO>().writeDataToXMLFile(XML_FILE_LOCATION, XML_FILE_NAME,
+                new AthletesDTO(athleteList), AthletesDTO.class);
     }
 
     int position = 1;

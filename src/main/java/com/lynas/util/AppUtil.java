@@ -1,6 +1,6 @@
 package com.lynas.util;
 
-import com.lynas.dto.ResultDTO;
+import com.lynas.dto.AthleteDTO;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -10,9 +10,9 @@ import static com.lynas.util.AppConstant.*;
 
 public class AppUtil {
 
-    public ResultDTO stringToResultDTO(String str){
+    public AthleteDTO stringToAthleteDTO(String str){
         String[] eachResult = str.split(CSV_SEPARATOR);
-        return new ResultDTO(
+        return new AthleteDTO(
                 eachResult[0],
                 Double.parseDouble(eachResult[1].trim()),
                 Double.parseDouble(eachResult[2].trim()),
